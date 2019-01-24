@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TODO: Enable this script by removing the above.
+# TODO: (done) Enable this script by removing the above.
 
 export MIX_ENV=prod
 export PORT=4790
@@ -11,7 +11,7 @@ _build/prod/rel/practice/bin/practice stop || true
 
 echo "Starting app..."
 
-_build/prod/rel/practice/bin/practice Start
+_build/prod/rel/practice/bin/practice start
 
 # TODO: (Done) Change "foreground" to "Start"
 
