@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# TODO: (done) Enable this script by removing the above.
+# TODO: (Done) Enable this script by removing the above.
 
 export MIX_ENV=prod
 export PORT=4790
