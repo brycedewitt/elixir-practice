@@ -24,15 +24,15 @@ defmodule Practice.Calc do
     # |> evaluate as a stack calculator using pattern matching
   end
 
+  # might pipe this later if I have time
   def palindrome?(x) do
-    x = String.replace(x, " ", "")
-    x = String.downcase(x)
 
-    if x == String.reverse(x) do
-      true
-      else
-        false
-    end
+    # first, cleaning up the input (remove spaces and caps)
+    y = String.replace(x, " ", "")
+    z = String.downcase(y)
+
+    # this is the logic to figure out if palindrome
+    z == String.reverse(z)
   end
 
   # This takes a collection comprised of the 4 basic math operators and numbers, and
