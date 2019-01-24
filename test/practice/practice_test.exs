@@ -1,3 +1,5 @@
+ExUnit.start()
+
 defmodule Practice.PracticeTest do
   use ExUnit.Case
   import Practice
@@ -27,5 +29,17 @@ defmodule Practice.PracticeTest do
     assert calc("8 + 5 * 3") == 23
   end
 
-  # TODO: Add two unit tests for palindrome.
+  # TODO: (done) Add two unit tests for palindrome.
+
+  # palindrome function is case & space insensitive for UTF-8 characters
+  test "test some palindromes" do
+    assert palindrome?("sonos") == true # checks for a true palindrome
+    assert palindrome?("bose") == false # checks for a false palindrome
+    assert palindrome?("10001") == true # checks that numbers are also palindromes
+    assert palindrome?("@tuut@") == true # checks that symbols can also be a palindrome
+    assert palindrome?("a santa at nasa") == true # checks a multi-word palindrome
+    assert palindrome?("A santa at NASA") == true # checks that capitalization doesn't matter
+    assert palindrome?("") == true # checks that an empty string is a palindrome (as stated in a paper online)
+    assert palindrome?("πσπ") == true # checks non-standard UTF-8 characters
+  end
 end

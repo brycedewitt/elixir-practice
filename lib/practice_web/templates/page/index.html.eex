@@ -28,11 +28,12 @@
     <% end %>
   </div>
   <div class="column">
-    <h2>Palindrome?</h2>
+    <h2>Is this a Palindrome?</h2>
 
-    <p>TODO: Add a form here that checks if a string is a palindrome.</p>
-    <p>INPUT BOX</p>
-    <p>SUBMIT BUTTON</p>
+    <%= form_for @conn, "/palindrome", fn f -> %>
+    <p> Enter a word or phrase: <%= text_input f, :x , placeholder: "Type something like 'Sonos'"%></p>
+    <p><%= submit "Check Palindrome" %></p>
+     <% end %>
   </div>
 </div>
 
