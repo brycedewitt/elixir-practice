@@ -21,13 +21,11 @@ defmodule Practice do
     # This also delegates to lib/practice/calc.ex
     # To function recursively, will take in the factor, an accumulator, and the list of past factors
     x
-    |> String.to_integer
     |> Practice.Calc.factor(2, [])
     |> Kernel.inspect # add some prettier stuff here later
   end
 
-  # TODO: (done) Add a palindrome? function.
-
+  # Delegates to the palindrome factor
   def palindrome?(x) do
     # Since we delegated the others, we'll delegate this too
     Practice.Calc.palindrome?(x)
