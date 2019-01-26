@@ -29,7 +29,6 @@ defmodule Practice.PracticeTest do
     assert calc("8 + 5 * 3") == 23
   end
 
-  # TODO: (done) Add two unit tests for palindrome.
 
   # palindrome function is case & space insensitive for UTF-8 characters
   test "test some palindromes" do

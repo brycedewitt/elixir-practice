@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# TODO: (Done) Enable this script by removing the above.
 
 export MIX_ENV=prod
 export PORT=4790
@@ -13,8 +12,5 @@ echo "Starting app..."
 
 _build/prod/rel/practice/bin/practice start
 
-# TODO: (Done) Change "foreground" to "Start"
 
-# TODO: Add a cron rule or systemd service file
-#       to start your app on system boot.
 

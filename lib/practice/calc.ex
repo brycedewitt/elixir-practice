@@ -121,7 +121,7 @@ defmodule Practice.Calc do
 
   # this is the stack calculator base case.  Returns only number in stack.
   def evaluate_as_stack(x, stack) when x == [] do
-    tl(Tuple.to_list(Enum.at(0)))
+    tl(Tuple.to_list(Enum.at(stack, 0)))
   end
 
   # this is the actual stack calculator
