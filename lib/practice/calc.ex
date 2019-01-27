@@ -66,21 +66,22 @@ defmodule Practice.Calc do
     end
 
   def convert_to_postfix(infix_list, op_stack, final_collection) when infix_list == [] do
-    final_collection
+    final_collection ++ op_stack
   end
 
   # 2. If the stack is empty, push the incoming operator onto the stack.
   def handle_operator(first_in_list, infix_list, op_stack, final_collection) when op_stack == [] do
     IO.puts("empty op stack function called")
-    x = op_stack ++ first_in_list
+    x = op_stack ++ [first_in_list]
     convert_to_postfix(infix_list, x, final_collection)
   end
 
   def handle_operator(first_in_list, infix_list, op_stack, final_collection) when op_stack != [] do
     a = length([op_stack])
-    operator = tl(Tuple.to_list(first_in_list))
-    first_operator_in_stack = tl(Tuple.to_list(op_stack))
-    IO.puts(operator  ++ first_operator_in_stack)
+    operator = hd(tl(Tuple.to_list(first_in_list)))
+    first_operator_in_stack = Kernel.elem((Enum.at(op_stack, 0)), 1)
+    IO.puts(Kernel.inspect(op_stack))
+
 
     cond do
     # 3. If the incoming symbol has equal precedence with the top of the stack, use association (left to right)
@@ -97,14 +98,14 @@ defmodule Practice.Calc do
 
     # 4. If the incoming symbol has higher precedence than the top of the stack, push it on the stack.
       ((operator == "*") || (operator == "/")) && ((first_operator_in_stack == "+") || (first_operator_in_stack == "-")) ->
-      y = op_stack ++  first_in_list
+      y = [op_stack] ++ [first_in_list]
       convert_to_postfix(infix_list, y, final_collection)
 
     # 5. If the incoming symbol has lower precedence than the symbol on the top of the stack, pop the stack and print
     #    the top operator. Then test the incoming operator against the new top of stack
       ((operator == "-") || (operator == "+")) && ((first_operator_in_stack == "*") || (first_operator_in_stack == "/")) ->
-       x = final_collection ++ first_in_list
-       y = hd(tl(op_stack))
+       x = final_collection ++ op_stack
+       y = hd(op_stack)
        z = tl(op_stack)
        handle_operator(y, infix_list, z, x)
       true ->
