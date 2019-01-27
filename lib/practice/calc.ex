@@ -11,9 +11,13 @@ defmodule Practice.Calc do
     # but doesn't need to handle parens.
     expr
     |> String.split(~r/\s+/) # This line chunks the text, based on spaces, into a collection
+    |> IO.puts
     |> tag_tokens # delegated the mappings of :num and :op to a helper function
+    |> IO.puts
     |> convert_to_postfix([], [])
+    |> IO.puts
     |> reverse_to_prefix
+    |> IO.puts
     |> evaluate_as_stack([])
 
     # Hint:
@@ -55,11 +59,11 @@ defmodule Practice.Calc do
     removed_first = List.delete_at(infix_list, 0)
 
     if hd(Tuple.to_list(first_in_list)) == :op do
-      IO.puts("Processing operation in primary function")
+      #IO.puts("Processing operation in primary function")
       handle_operator(first_in_list, removed_first, op_stack, final_collection)
     else
       # 1. Print operands as they arrive.
-      IO.puts("Processing number in primary function")
+      #IO.puts("Processing number in primary function")
       final_collection_plus_num = final_collection ++ [first_in_list]
       convert_to_postfix(removed_first, op_stack, final_collection_plus_num)
     end
@@ -71,7 +75,7 @@ defmodule Practice.Calc do
 
   # 2. If the stack is empty, push the incoming operator onto the stack.
   def handle_operator(first_in_list, infix_list, op_stack, final_collection) when op_stack == [] do
-    IO.puts("empty op stack function called")
+    #IO.puts("empty op stack function called")
     x = op_stack ++ [first_in_list]
     convert_to_postfix(infix_list, x, final_collection)
   end
@@ -80,7 +84,7 @@ defmodule Practice.Calc do
     a = length([op_stack])
     operator = hd(tl(Tuple.to_list(first_in_list)))
     first_operator_in_stack = Kernel.elem((Enum.at(op_stack, 0)), 1)
-    IO.puts(Kernel.inspect(op_stack))
+    #IO.puts(Kernel.inspect(op_stack))
 
 
     cond do
@@ -109,7 +113,7 @@ defmodule Practice.Calc do
        z = tl(op_stack)
        handle_operator(y, infix_list, z, x)
       true ->
-        IO.puts("Error in handle_operator")
+        #IO.puts("Error in handle_operator")
       end
 
     end
